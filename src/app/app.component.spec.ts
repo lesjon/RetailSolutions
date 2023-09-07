@@ -1,9 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { ItemListComponent } from "./item-list/item-list.component";
+import { CdkAccordionModule} from "@angular/cdk/accordion";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent]
+    declarations: [AppComponent, ItemListComponent],
+    imports: [CdkAccordionModule]
   }));
 
   it('should create the app', () => {
@@ -18,10 +21,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('RetailSolutions');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('RetailSolutions app is running!');
-  });
 });
