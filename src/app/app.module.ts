@@ -6,17 +6,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemListComponent } from './item-list/item-list.component';
 import {CdkAccordionModule} from "@angular/cdk/accordion";
 import {NgOptimizedImage} from "@angular/common";
+import { ItemCartComponent } from './item-cart/item-cart.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemListComponent
+    ItemListComponent,
+    ItemCartComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CdkAccordionModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,6 +13,11 @@
       <span class="example-accordion-item-description">
         Click to {{ accordionItem.expanded ? 'close' : 'open' }}
       </span>
+      <button mat-icon-button (click)="addItem(item); $event.stopPropagation()">
+        <mat-icon>
+          add
+        </mat-icon>
+      </button>
     </div>
     <div
       class="example-accordion-item-body"

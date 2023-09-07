@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import lineItems from '../../assets/items.json';
 import {Item} from "../item";
 import {ItemService} from "../item.service";
+import {CartService} from "../cart.service";
 
 @Component({
   selector: 'app-item-list',
@@ -12,10 +13,14 @@ export class ItemListComponent implements OnInit {
 
   items: Item[] | undefined;
 
-  constructor(private itemService: ItemService ) {
+  constructor(private itemService: ItemService, private cartService: CartService) {
     itemService.getItems().subscribe(items => this.items = items);
   }
 
   ngOnInit(): void {
+  }
+
+  addItem(item: Item) {
+    this.cartService.add(item);
   }
 }

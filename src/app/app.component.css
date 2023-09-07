@@ -39,7 +39,7 @@ p {
   margin: 82px auto 32px;
   padding: 0 16px;
   flex-direction: row;
-  align-items: flex-start;
+  justify-content: space-around;
 }
 
 

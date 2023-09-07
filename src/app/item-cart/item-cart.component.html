@@ -1,0 +1,21 @@
+<h3>Cart</h3>
+<table mat-table [dataSource]="cart" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="item.name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let cartItem"> {{cartItem.item.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="count">
+    <th mat-header-cell *matHeaderCellDef> Count </th>
+    <td mat-cell *matCellDef="let cartItem"> {{cartItem.count}} </td>
+  </ng-container>
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef> Total </th>
+    <td mat-cell *matCellDef="let cartItem"> {{cartItem.count * cartItem.item.price }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

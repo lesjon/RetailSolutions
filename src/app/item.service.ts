@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import * as items from '../assets/items.json';
+import items from '../assets/items.json';
 import {from} from "rxjs";
 import {Item} from "./item";
 
@@ -7,12 +7,12 @@ import {Item} from "./item";
   providedIn: 'root'
 })
 export class ItemService {
-  private items = items;
+  private items = items as Item[];
 
   constructor() {
   }
 
   getItems() {
-    return from<Item[][]>([items]);
+    return from<Item[][]>([this.items]);
   }
 }
