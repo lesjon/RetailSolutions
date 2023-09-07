@@ -1,3 +1,4 @@
+[![Node.js CI](https://github.com/lesjon/RetailSolutions/actions/workflows/node.yml/badge.svg)](https://github.com/lesjon/RetailSolutions/actions/workflows/node.yml)
 # RetailSolutions
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
