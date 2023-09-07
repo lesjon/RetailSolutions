@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import lineItems from '../../assets/items.json';
-interface Item {
-  name: string,
-  price: number,
-  image: string
-}
+import {Item} from "../item";
+import {ItemService} from "../item.service";
 
 @Component({
   selector: 'app-item-list',
@@ -13,10 +10,10 @@ interface Item {
 })
 export class ItemListComponent implements OnInit {
 
-  items: Item[];
+  items: Item[] | undefined;
 
-  constructor() {
-    this.items = lineItems;
+  constructor(private itemService: ItemService ) {
+    itemService.getItems().subscribe(items => this.items = items);
   }
 
   ngOnInit(): void {
