@@ -2,10 +2,11 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { ItemListComponent } from "./item-list/item-list.component";
 import { CdkAccordionModule} from "@angular/cdk/accordion";
+import {ItemCartComponent} from "./item-cart/item-cart.component";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent, ItemListComponent],
+    declarations: [AppComponent, ItemListComponent, ItemCartComponent],
     imports: [CdkAccordionModule]
   }));
 

@@ -1,3 +1,13 @@
 table {
   width: 500px;
 }
+
+.item-cart {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+}
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}

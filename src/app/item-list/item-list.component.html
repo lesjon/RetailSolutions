@@ -9,7 +9,7 @@
     [attr.aria-expanded]="accordionItem.expanded"
     [attr.aria-controls]="'accordion-body-' + index">
     <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
-      {{ item.name }} - €{{ item.price }}
+      {{ item.name }} - {{ item.price | currency:'EUR' }}
       <span class="example-accordion-item-description">
         Click to {{ accordionItem.expanded ? 'close' : 'open' }}
       </span>

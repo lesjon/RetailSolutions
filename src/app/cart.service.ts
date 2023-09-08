@@ -22,7 +22,6 @@ export class CartService {
     } else {
       this.items.push({count: count, item: item, itemId: item.id});
     }
-    console.log('next items:', {items: this.items});
     this.cartSubject.next(this.items);
   }
 
