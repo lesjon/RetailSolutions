@@ -19,10 +19,10 @@ export class ScannerComponent implements AfterContentChecked {
   ngAfterContentChecked() {
     console.log('ngAfterContentChecked');
     this.scannerInput?.nativeElement.focus();
-    if (this.value.length === 13) {
-      console.log('this.value=', this.value)
-      this.scannedItem = this.scannerService.get(this.value);
-      this.value = '';
-    }
+  }
+
+  getScanned() {
+    this.scannedItem = this.scannerService.get(this.value);
+    this.value = '';
   }
 }
