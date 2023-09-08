@@ -1,0 +1,14 @@
+<div class="scanner">
+  <mat-form-field class="example-form-field">
+    <mat-label>Scanner input</mat-label>
+    <input matInput type="text" [(ngModel)]="value" #scannerInput>
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+<!--  <mat-card *ngIf="scannedItem" class="mat-card">-->
+    <div>
+      <p>{{scannedItem}}</p>
+    </div>
+<!--  </mat-card>-->
+</div>

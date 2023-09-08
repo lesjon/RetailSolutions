@@ -10,12 +10,18 @@ import { ItemCartComponent } from './item-cart/item-cart.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import { ScannerComponent } from './scanner/scanner.component';
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
+import {MatCardModule} from "@angular/material/card";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemListComponent,
-    ItemCartComponent
+    ItemCartComponent,
+    ScannerComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +30,11 @@ import {MatIconModule} from "@angular/material/icon";
     NgOptimizedImage,
     MatTableModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule,
+    FormsModule,
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

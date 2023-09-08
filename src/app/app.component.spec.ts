@@ -3,11 +3,15 @@ import { AppComponent } from './app.component';
 import { ItemListComponent } from "./item-list/item-list.component";
 import { CdkAccordionModule} from "@angular/cdk/accordion";
 import {ItemCartComponent} from "./item-cart/item-cart.component";
+import {ScannerComponent} from "./scanner/scanner.component";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent, ItemListComponent, ItemCartComponent],
-    imports: [CdkAccordionModule]
+    declarations: [AppComponent, ItemListComponent, ItemCartComponent, ScannerComponent],
+    imports: [CdkAccordionModule, HttpClientTestingModule, FormsModule, MatInputModule],
   }));
 
   it('should create the app', () => {
