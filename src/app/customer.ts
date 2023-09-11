@@ -7,4 +7,5 @@ export interface Customer {
   zipCode: string;
   city: string;
   email: string;
+  points: number;
 }

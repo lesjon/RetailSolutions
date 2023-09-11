@@ -2,6 +2,6 @@ import {Item} from "./item";
 
 export interface CartItem {
   count: number,
-  itemId: number,
+  itemId: string,
   item: Item
 }

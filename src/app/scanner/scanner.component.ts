@@ -3,6 +3,8 @@ import {Item} from "../item";
 import {Customer} from "../customer";
 import {CustomerService} from "../customer.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {ItemService} from "../item.service";
+import {CartService} from "../cart.service";
 
 @Component({
   selector: 'app-scanner',
@@ -15,7 +17,9 @@ export class ScannerComponent implements AfterContentChecked {
   scannedItem: Item | Customer | undefined;
   errorMessage = '';
 
-  constructor(private customerService: CustomerService) {
+  constructor(private customerService: CustomerService,
+              private itemService: ItemService,
+              private cartService: CartService) {
     this.customerService.getObserver().subscribe({
       next: customer => {
         this.scannedItem = customer;
@@ -42,15 +46,26 @@ export class ScannerComponent implements AfterContentChecked {
         return;
       }
       this.customerService.update(id).subscribe({
-        next: customer => {},
+        next: customer => {
+        },
         error: (err) => {
           this.errorMessage = (err as HttpErrorResponse).message;
         }
       });
     } else {
       console.log('scanned item');
-      this.scannedItem = undefined;
-      this.errorMessage = 'Item scanning not yet implemented';
+      this.itemService.getItem(this.value).subscribe({
+        next: item => {
+          if (item) {
+            this.cartService.add(item);
+          } else {
+            this.errorMessage = 'Item not found';
+          }
+        },
+        error: (err) => {
+          this.errorMessage = (err as HttpErrorResponse).message;
+        }
+      });
     }
     this.value = '';
   }
