@@ -33,4 +33,15 @@ export class CartService {
     this.items = [];
     this.cartSubject.next(this.items);
   }
+
+  remove(item: Item, count: number = 1) {
+    let cartItem = this.items.find(cartItem => cartItem.itemId === item.id)
+    if (cartItem) {
+      cartItem.count -= count;
+      if (cartItem.count <= 0) {
+        this.items = this.items.filter(cartItem => cartItem.itemId !== item.id);
+      }
+      this.cartSubject.next(this.items);
+    }
+  }
 }
