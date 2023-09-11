@@ -1,0 +1,12 @@
+[
+  {
+    "id": "DC-0000000001",
+    "firstName": "Paul",
+    "lastName": "Poulburg",
+    "street": "example street",
+    "houseNumber": "14",
+    "zipCode": "5432WE",
+    "city": "Putten",
+    "email": "customername@gmail.com"
+  }
+]

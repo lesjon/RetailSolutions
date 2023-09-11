@@ -2,19 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Customer} from "./customer";
 import {from, Observable, Subject} from "rxjs";
-
-const customers :Customer[] = [
-  {
-    "id": "DC-0000000001",
-    "firstName": "Paul",
-    "lastName": "Poulburg",
-    "street": "example street",
-    "houseNumber": "14",
-    "zipCode": "5432WE",
-    "city": "Putten",
-    "email": "customername@gmail.com"
-  }
-];
+import customers from '../assets/customers.json';
 
 @Injectable({
   providedIn: 'root'
