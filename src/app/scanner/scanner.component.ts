@@ -1,7 +1,8 @@
 import {AfterContentChecked, Component, ElementRef, ViewChild} from '@angular/core';
 import {Item} from "../item";
 import {Customer} from "../customer";
-import {ScannerService} from "../scanner.service";
+import {CustomerService} from "../customer.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-scanner',
@@ -12,17 +13,45 @@ export class ScannerComponent implements AfterContentChecked {
   @ViewChild('scannerInput') scannerInput: ElementRef<HTMLInputElement> | undefined;
   value = '';
   scannedItem: Item | Customer | undefined;
+  errorMessage = '';
 
-  constructor(private scannerService: ScannerService) {
+  constructor(private customerService: CustomerService) {
+    this.customerService.getObserver().subscribe({
+      next: customer => {
+        this.scannedItem = customer;
+      },
+      error: (err) => {
+        this.errorMessage = (err as HttpErrorResponse).message;
+      },
+    });
   }
 
+  /*
+   always put the focus on the scanner input field (after any change detection)
+   */
   ngAfterContentChecked() {
-    console.log('ngAfterContentChecked');
     this.scannerInput?.nativeElement.focus();
   }
 
   getScanned() {
-    this.scannedItem = this.scannerService.get(this.value);
+    if (this.value.toUpperCase().startsWith('DC-')) {
+      console.log('scanned customer');
+      const id = this.value.substring(3);
+      if (isNaN(parseInt(id, 10))) {
+        this.errorMessage = 'Invalid customer id';
+        return;
+      }
+      this.customerService.update(id).subscribe({
+        next: customer => {},
+        error: (err) => {
+          this.errorMessage = (err as HttpErrorResponse).message;
+        }
+      });
+    } else {
+      console.log('scanned item');
+      this.scannedItem = undefined;
+      this.errorMessage = 'Item scanning not yet implemented';
+    }
     this.value = '';
   }
 }

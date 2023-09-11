@@ -1,5 +1,9 @@
 <div class="toolbar" role="banner">
-  <div style="margin-left: 2ch">Retail Solutions</div>
+  <div style="margin: 2ch">Retail Solutions</div>
+  <div class="spacer"></div>
+  <div>
+    <span *ngIf="customer" style="margin: 2ch">{{ customer.id }}</span>
+  </div>
 </div>
 
 <div class="content" role="main">

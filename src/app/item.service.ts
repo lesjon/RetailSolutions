@@ -15,4 +15,8 @@ export class ItemService {
   getItems() {
     return from<Item[][]>([this.items]);
   }
+
+  getItem(id: number) {
+    return from([this.items.find(item => item.id === id)]);
+  }
 }

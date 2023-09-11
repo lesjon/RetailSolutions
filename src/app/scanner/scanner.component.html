@@ -6,7 +6,7 @@
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-  <div>
-    <p>{{scannedItem}}</p>
+  <div *ngIf="errorMessage !== ''">
+    <p>{{errorMessage}}</p>
   </div>
 </div>

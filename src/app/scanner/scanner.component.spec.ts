@@ -1,11 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ScannerComponent } from './scanner.component';
-import {ScannerService} from "../scanner.service";
+import {CustomerService} from "../customer.service";
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
+class CustomerServiceMock {
+  getObserver() {
+    return {
+      subscribe: () => {}
+    };
+  }
+}
 describe('ScannerComponent', () => {
   let component: ScannerComponent;
   let fixture: ComponentFixture<ScannerComponent>;
@@ -13,7 +20,7 @@ describe('ScannerComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ScannerComponent],
-      providers: [{ provide: ScannerService, useValue: {}}],
+      providers: [{ provide: CustomerService, useClass: CustomerServiceMock }],
       imports: [FormsModule, MatInputModule, NoopAnimationsModule]
     });
     fixture = TestBed.createComponent(ScannerComponent);
