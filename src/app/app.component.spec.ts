@@ -7,11 +7,13 @@ import {ScannerComponent} from "./scanner/scanner.component";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatTabsModule} from "@angular/material/tabs";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [AppComponent, ItemListComponent, ItemCartComponent, ScannerComponent],
-    imports: [CdkAccordionModule, HttpClientTestingModule, FormsModule, MatInputModule],
+    imports: [CdkAccordionModule, HttpClientTestingModule, FormsModule, MatInputModule, MatToolbarModule, MatTabsModule],
   }));
 
   it('should create the app', () => {

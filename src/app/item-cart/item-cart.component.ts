@@ -11,7 +11,7 @@ import {Item} from "../item";
   styleUrls: ['item-cart.component.css'],
   templateUrl: 'item-cart.component.html',
 })
-export class ItemCartComponent implements OnInit, AfterContentChecked {
+export class ItemCartComponent implements OnInit {
   displayedColumns: string[] = ['item.name', 'count', 'total'];
   cart: Observable<CartItem[]>;
   total: number = 0;
@@ -39,13 +39,6 @@ export class ItemCartComponent implements OnInit, AfterContentChecked {
     });
   }
 
-  ngAfterContentChecked(): void {
-    this.totalWithDiscount = this.total - this.points;
-    while(this.totalWithDiscount < 0) {
-      this.totalWithDiscount += 1;
-    }
-  }
-
   protected readonly Math = Math;
 
   clearCart() {
@@ -58,5 +51,10 @@ export class ItemCartComponent implements OnInit, AfterContentChecked {
 
   addToCart(item: Item) {
     this.cartService.add(item);
+  }
+
+  checkout() {
+    console.log('checkout');
+    this.cartService.clear();
   }
 }

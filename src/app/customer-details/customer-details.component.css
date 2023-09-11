@@ -1,0 +1,29 @@
+.customer-details {
+  width: 70vw;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width-form-field {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 4px;
+  padding: 10px;
+}

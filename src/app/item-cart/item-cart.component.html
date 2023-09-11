@@ -1,8 +1,8 @@
 <div class="item-cart">
-  <div style="padding: 16px; display: flex; flex-direction: row">
+  <div style="padding: 16px; display: flex; flex-direction: row; justify-content: space-between">
     <h2>Cart</h2>
-    <div class="spacer"></div>
     <button mat-raised-button color="warn" (click)="clearCart()">Clear</button>
+    <button mat-raised-button color="primary" (click)="checkout()">Checkout</button>
   </div>
   <table mat-table [dataSource]="cart">
 
@@ -33,17 +33,15 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <div class="total">
+  <mat-divider/>
+  <div class="savings">
     <h3>Savings:</h3>
-    <div class="spacer"></div>
     <h3>{{points | currency:'EUR' }}</h3>
-    <div class="spacer"></div>
   </div>
+  <mat-divider/>
   <div class="total">
-    <h3>Total:</h3>
-    <div class="spacer"></div>
-    <h3>{{Math.max(0, total - points) | currency:'EUR' }}</h3>
-    <div class="spacer"></div>
+    <h3 style="font-weight: inherit">Total:</h3>
+    <h3 style="font-weight: inherit">{{Math.max(0, total - points) | currency:'EUR' }}</h3>
   </div>
 
 </div>

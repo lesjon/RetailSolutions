@@ -10,6 +10,7 @@ import {CustomerService} from "./customer.service";
 export class AppComponent {
   title = 'RetailSolutions';
   customer: Customer | undefined;
+  selectedIndex: number | null = 0;
   constructor(private customerService: CustomerService) {
     this.customerService.getObserver().subscribe(customer => {
       this.customer = customer;
