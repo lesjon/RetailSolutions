@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import lineItems from '../../assets/items.json';
 import {Item} from "../item";
 import {ItemService} from "../item.service";
 import {CartService} from "../cart.service";

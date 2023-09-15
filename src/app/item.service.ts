@@ -1,22 +1,25 @@
 import {Injectable} from '@angular/core';
-import items from '../assets/items.json';
 import {from} from "rxjs";
 import {Item} from "./item";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
-  private items = items as Item[];
 
-  constructor() {
+  constructor(private http: HttpClient) {
+  }
+
+  createItem(item: Item) {
+    return this.http.post<Item>('http://localhost:8080/api/items/addItem', item);
   }
 
   getItems() {
-    return from<Item[][]>([this.items]);
+    return this.http.get<Item[]>('http://localhost:8080/api/items');
   }
 
   getItem(id: string) {
-    return from([this.items.find(item => item.id === id)]);
+    return this.http.get<Item>('http://localhost:8080/api/items/getItemById/' + id);
   }
 }

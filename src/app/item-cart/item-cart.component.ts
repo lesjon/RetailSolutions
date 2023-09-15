@@ -1,8 +1,7 @@
-import {AfterContentChecked, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartService} from "../cart.service";
 import {CartItem} from "../cart-item";
 import {Observable} from "rxjs";
-import {CurrencyPipe} from "@angular/common";
 import {CustomerService} from "../customer.service";
 import {Item} from "../item";
 
@@ -15,14 +14,17 @@ export class ItemCartComponent implements OnInit {
   displayedColumns: string[] = ['item.name', 'count', 'total'];
   cart: Observable<CartItem[]>;
   total: number = 0;
-  totalWithDiscount: number = 0;
   points: number = 0;
 
   constructor(private cartService: CartService, private customerService: CustomerService) {
     this.cart = cartService.getObserver();
     this.customerService.getObserver().subscribe({
       next: (customer) => {
-        this.points = customer.points;
+        if (!customer) {
+          this.points = 0;
+        } else {
+          this.points = customer.points;
+        }
       },
       error: (err) => {
         this.points = 0;
@@ -55,6 +57,7 @@ export class ItemCartComponent implements OnInit {
 
   checkout() {
     console.log('checkout');
+    this.customerService.updatePoints(Math.floor(this.total / 10)).subscribe();
     this.cartService.clear();
   }
 }
